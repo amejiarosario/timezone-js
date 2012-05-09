@@ -122,6 +122,9 @@ timezoneJS.Date.prototype = {
     var info = this.getTimezoneInfo();
     return info.tzOffset;
   },
+	getOffset: function(){
+		return this.getTimezoneOffset()/60;
+	},
   getTimezoneAbbreviation: function () {
     var info = this.getTimezoneInfo();
     return info.tzAbbr;
@@ -735,6 +738,9 @@ timezoneJS.timezone = new function() {
   this.zones = {};
   this.rules = {};
 
+	/**
+	 * Load the file via AJAX
+	 */
   this.init = function (o) {
     var opts = { async: true };
     var sync = false;
